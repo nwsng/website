@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Sans+Gurmukhi:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Gentium+Plus:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
-            <div class="logo">new song</div>
+            <div class="logo">
+                <img src="public/logo_light.png" alt="new song" class="logo-img logo-light">
+                <img src="public/logo_dark.png" alt="new song" class="logo-img logo-dark">
+            </div>
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link">home</a></li>
                 <li><a href="#about" class="nav-link">about</a></li>
@@ -36,16 +39,32 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-background"></div>
+        <div class="hero-background" style="background-image: url('public/hero.png');"></div>
         <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="title-line">new song</span>
-                <span class="title-line">church</span>
-            </h1>
+            <h1 class="hero-title">new song</h1>
+            <div class="hero-translations">
+                <span class="translation-ipa">/njuː sɒŋ/</span>
+                <span class="translation-sep">·</span>
+                <span class="translation-kr">뉴송</span>
+                <span class="translation-sep">·</span>
+                <span class="translation-jp">ニューソング</span>
+                <span class="translation-sep">·</span>
+                <span class="translation-zh">新歌</span>
+                <span class="translation-sep">·</span>
+                <span class="translation-ar">أغنية جديدة</span>
+                <span class="translation-sep">·</span>
+                <span class="translation-pa">ਨਵਾਂ ਗੀਤ</span>
+                <span class="translation-sep">·</span>
+                <span class="translation-hi">नया गीत</span>
+            </div>
             <p class="hero-subtitle">a community where faith meets life</p>
             <div class="hero-cta">
                 <a href="#connect" class="btn btn-primary">join us</a>
                 <a href="#about" class="btn btn-secondary">learn more</a>
+            </div>
+            <div class="hero-social">
+                <a href="#" class="hero-social-link" aria-label="Instagram">instagram</a>
+                <a href="#" class="hero-social-link" aria-label="YouTube">youtube</a>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -126,7 +145,7 @@
                 </div>
                 <p class="connect-text">we'd love to hear from you. reach out to learn more, ask questions, or just say hello.</p>
                 <div class="contact-info">
-                    <a href="mailto:info@newsongchurch.ca" class="contact-item">
+                    <!-- <a href="mailto:info@newsongchurch.ca" class="contact-item">
                         <div class="contact-icon">e</div>
                         <div>
                             <div class="contact-label">email</div>
@@ -139,7 +158,7 @@
                             <div class="contact-label">phone</div>
                             <div class="contact-value">(123) 456-7890</div>
                         </div>
-                    </a>
+                    </a> -->
                     <div class="contact-item">
                         <div class="contact-icon">l</div>
                         <div>

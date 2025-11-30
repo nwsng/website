@@ -8,8 +8,8 @@
 :root {
     /* Light Theme - IKEA/Furniture Shop/Cafe Aesthetic */
     --text-dark: #2c2c2c;
-    --text-light: #6b6b6b;
-    --text-muted: #9b9b9b;
+    --text-light: #4a4a4a;
+    --text-muted: #7a7a7a;
     --bg-primary: #faf9f7;
     --bg-secondary: #f5f4f2;
     --bg-cream: #fefcf8;
@@ -50,7 +50,7 @@ html {
 }
 
 body {
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--text-dark);
     line-height: 1.7;
     overflow-x: hidden;
@@ -129,12 +129,26 @@ body {
 }
 
 .logo {
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: var(--text-dark);
-    letter-spacing: -0.01em;
-    text-transform: lowercase;
-    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 2rem;
+    width: auto;
+    display: block;
+}
+
+.logo-dark {
+    display: none;
+}
+
+[data-theme="dark"] .logo-light {
+    display: none;
+}
+
+[data-theme="dark"] .logo-dark {
+    display: block;
 }
 
 .nav-links {
@@ -210,29 +224,39 @@ body {
     bottom: 0;
     z-index: 0;
     background: var(--bg-cream);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     opacity: 1;
+    filter: blur(20px);
+    transform: scale(1.1);
 }
 
 .hero-background::before {
     content: '';
     position: absolute;
-    top: 20%;
-    right: 10%;
-    width: 400px;
-    height: 400px;
-    background: var(--bg-beige);
-    border-radius: 50%;
-    filter: blur(100px);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-primary);
     opacity: 0.5;
+    z-index: 1;
 }
 
 [data-theme="dark"] .hero-background {
+    filter: blur(0px);
+    transform: scale(1);
+}
+
+[data-theme="dark"] .hero-background::before {
     background: var(--bg-primary);
+    opacity: 0.5;
 }
 
 .hero-content {
     text-align: left;
-    z-index: 1;
+    z-index: 2;
     animation: fadeInUp 0.8s ease;
     position: relative;
     max-width: 1200px;
@@ -242,23 +266,74 @@ body {
 
 .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 10vw, 8rem);
+    font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 300;
     line-height: 1;
-    margin-bottom: 2rem;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.02em;
-    color: var(--text-dark);
+    color: #1a1a1a;
     text-transform: lowercase;
 }
 
-.title-line {
-    display: block;
+[data-theme="dark"] .hero-title {
     color: var(--text-dark);
+}
+
+.hero-translations {
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    color: #1a1a1a;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.8;
+}
+
+[data-theme="dark"] .hero-translations {
+    color: var(--text-dark);
+    opacity: 0.6;
+}
+
+.translation-sep {
+    margin: 0 0.75rem;
+    opacity: 0.5;
+}
+
+.translation-ipa {
+    font-family: 'Gentium Plus', 'Charis SIL', 'Doulos SIL', 'Arial Unicode MS', 'Lucida Sans Unicode', serif;
+    font-style: italic;
+}
+
+.translation-kr {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
+.translation-jp {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+}
+
+.translation-zh {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif;
+}
+
+.translation-ar {
+    font-family: 'Noto Sans Arabic', 'Arial', sans-serif;
+    direction: rtl;
+    display: inline-block;
+}
+
+.translation-pa {
+    font-family: 'Noto Sans Gurmukhi', 'Arial', sans-serif;
+}
+
+.translation-hi {
+    font-family: 'Noto Sans Devanagari', 'Arial', sans-serif;
 }
 
 .hero-subtitle {
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    color: var(--text-light);
+    color: #1a1a1a;
+    opacity: 0.95;
     margin-bottom: 3rem;
     font-weight: 300;
     letter-spacing: 0.02em;
@@ -266,11 +341,51 @@ body {
     line-height: 1.6;
 }
 
+[data-theme="dark"] .hero-subtitle {
+    color: var(--text-dark);
+    opacity: 1;
+}
+
 .hero-cta {
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.hero-social {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hero-social-link {
+    text-decoration: none;
+    color: #1a1a1a;
+    opacity: 0.85;
+    font-weight: 300;
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+    text-transform: lowercase;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid transparent;
+}
+
+[data-theme="dark"] .hero-social-link {
+    color: var(--text-dark);
+    opacity: 0.7;
+}
+
+.hero-social-link:hover {
+    opacity: 1;
+    border-bottom-color: #1a1a1a;
+}
+
+[data-theme="dark"] .hero-social-link:hover {
+    border-bottom-color: var(--text-dark);
 }
 
 .btn {
@@ -308,6 +423,51 @@ body {
     background: var(--text-dark);
     color: var(--bg-primary);
     transform: translateY(-2px);
+}
+
+.hero .btn {
+    border-color: #1a1a1a;
+}
+
+[data-theme="dark"] .hero .btn {
+    border-color: var(--text-dark);
+}
+
+.hero .btn-primary {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+[data-theme="dark"] .hero .btn-primary {
+    background: var(--text-dark);
+    border-color: var(--text-dark);
+}
+
+.hero .btn-primary:hover {
+    color: #1a1a1a;
+}
+
+[data-theme="dark"] .hero .btn-primary:hover {
+    color: var(--text-dark);
+}
+
+.hero .btn-secondary {
+    color: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+[data-theme="dark"] .hero .btn-secondary {
+    color: var(--text-dark);
+    border-color: var(--text-dark);
+}
+
+.hero .btn-secondary:hover {
+    background: #1a1a1a;
+}
+
+[data-theme="dark"] .hero .btn-secondary:hover {
+    background: var(--text-dark);
+    color: var(--bg-primary);
 }
 
 .scroll-indicator {
@@ -438,6 +598,8 @@ section {
     border: none;
     transition: all 0.3s ease;
     position: relative;
+    padding-left: 2rem;
+    border-left: 1px solid var(--border-color);
 }
 
 .value-card::before {
@@ -449,10 +611,27 @@ section {
     height: 0;
     background: var(--accent-warm);
     transition: height 0.4s ease;
+    z-index: 1;
+}
+
+.value-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-warm);
+    transition: width 0.4s ease;
+    z-index: 1;
 }
 
 .value-card:hover::before {
     height: 100%;
+}
+
+.value-card:hover::after {
+    width: 100%;
 }
 
 .value-icon {
@@ -461,7 +640,7 @@ section {
     letter-spacing: -0.01em;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', sans-serif;
     text-transform: lowercase;
 }
 
@@ -471,7 +650,6 @@ section {
     color: var(--text-dark);
     font-weight: 300;
     font-family: 'Cormorant Garamond', serif;
-    padding-left: 1.5rem;
     text-transform: lowercase;
     letter-spacing: -0.01em;
 }
@@ -481,7 +659,6 @@ section {
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.7;
-    padding-left: 1.5rem;
 }
 
 /* Services Section */
@@ -497,7 +674,7 @@ section {
 }
 
 .service-card {
-    background: var(--card-bg);
+    background: transparent;
     padding: 0;
     transition: all 0.3s ease;
     border: none;
@@ -506,19 +683,36 @@ section {
     border-left: 1px solid var(--border-color);
 }
 
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background: var(--accent-warm);
+    transition: height 0.4s ease;
+    z-index: 1;
+}
+
 .service-card::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 1px;
-    height: 0;
-    background: var(--text-dark);
-    transition: height 0.4s ease;
+    width: 0;
+    height: 2px;
+    background: var(--accent-warm);
+    transition: width 0.4s ease;
+    z-index: 1;
+}
+
+.service-card:hover::before {
+    height: 100%;
 }
 
 .service-card:hover::after {
-    height: 100%;
+    width: 100%;
 }
 
 .service-time {
@@ -622,7 +816,7 @@ section {
     border-radius: 0;
     flex-shrink: 0;
     color: var(--text-dark);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', sans-serif;
     transition: all 0.3s ease;
     letter-spacing: -0.01em;
     text-transform: lowercase;
@@ -758,6 +952,12 @@ section {
     }
 
     .hero-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .hero-social {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
