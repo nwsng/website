@@ -20,123 +20,177 @@ function updateThemeIcon(theme) {
     icon.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 
-// Navigation scroll effect
-const nav = document.getElementById('nav');
-let lastScroll = 0;
+// Page Navigation
+const notebookContainer = document.querySelector('.notebook-container');
+const pages = document.querySelectorAll('.notebook-page');
+const pageIndicators = document.querySelectorAll('.page-indicator');
+const navLinks = document.querySelectorAll('.nav-link');
+let currentPage = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+const pageNames = ['home', 'about', 'watch', 'prayer', 'new'];
+
+function goToPage(index) {
+    if (index < 0 || index >= pages.length) return;
     
-    if (currentScroll > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
+    currentPage = index;
+    const offset = -index * 100;
+    notebookContainer.style.transform = `translateX(${offset}vw)`;
+    
+    // Update active states
+    pages.forEach((page, i) => {
+        page.classList.toggle('page-active', i === index);
+    });
+    
+    pageIndicators.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === index);
+    });
+    
+    navLinks.forEach((link, i) => {
+        link.classList.toggle('active', i === index);
+    });
+    
+    // Update URL hash
+    window.history.pushState(null, '', `#page-${pageNames[index]}`);
+}
+
+// Initialize from URL hash
+function initPage() {
+    const hash = window.location.hash;
+    if (hash) {
+        const pageName = hash.replace('#page-', '');
+        const index = pageNames.indexOf(pageName);
+        if (index !== -1) {
+            goToPage(index);
+            return;
+        }
     }
+    goToPage(0);
+}
+
+// Navigation buttons
+const pagePrev = document.getElementById('pagePrev');
+const pageNext = document.getElementById('pageNext');
+
+if (pagePrev) {
+    pagePrev.addEventListener('click', () => {
+        goToPage(currentPage - 1);
+    });
+}
+
+if (pageNext) {
+    pageNext.addEventListener('click', () => {
+        goToPage(currentPage + 1);
+    });
+}
+
+// Page indicators
+pageIndicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+        goToPage(index);
+    });
+});
+
+// Nav links
+navLinks.forEach((link, index) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToPage(index);
+        // Close mobile menu
+        if (menuToggle) {
+            menuToggle.classList.remove('active');
+            const navLinksContainer = document.querySelector('.nav-links');
+            if (navLinksContainer) {
+                navLinksContainer.classList.remove('active');
+            }
+        }
+    });
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+        goToPage(currentPage - 1);
+    } else if (e.key === 'ArrowRight') {
+        goToPage(currentPage + 1);
+    }
+});
+
+// Handle browser back/forward
+window.addEventListener('popstate', () => {
+    initPage();
+});
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    initPage();
     
-    lastScroll = currentScroll;
+    // Prevent scroll on body and html
+    document.documentElement.style.overflowX = 'hidden';
+    document.documentElement.style.overflowY = 'hidden';
+    document.body.style.overflowX = 'hidden';
+    document.body.style.overflowY = 'hidden';
+    document.body.style.width = '100%';
+    document.body.style.position = 'relative';
+    
+    // Allow scroll within pages
+    pages.forEach(page => {
+        const pageContent = page.querySelector('.page-content');
+        if (pageContent) {
+            pageContent.style.overflowY = 'auto';
+            pageContent.style.overflowX = 'hidden';
+            pageContent.style.height = '100vh';
+            pageContent.style.maxWidth = '100%';
+        }
+    });
+
+    // Prevent horizontal scroll on touch devices
+    document.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+    }, { passive: false });
 });
 
 // Mobile menu toggle
 const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.querySelector('.nav-links');
+const navLinksContainer = document.querySelector('.nav-links');
 
-menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
+if (menuToggle && navLinksContainer) {
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinksContainer.classList.toggle('active');
     });
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (menuToggle && navLinksContainer && 
+        !menuToggle.contains(e.target) && 
+        !navLinksContainer.contains(e.target)) {
+        menuToggle.classList.remove('active');
+        navLinksContainer.classList.remove('active');
+    }
 });
 
-// Smooth scroll for navigation links
+// Navigation scroll effect (for nav bar)
+const nav = document.getElementById('nav');
+if (nav) {
+    // Nav is always visible in notebook layout, but we can still add scrolled class for styling
+    nav.classList.add('scrolled');
+}
+
+// Smooth scroll for internal links within pages
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const navHeight = nav.offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+        const href = this.getAttribute('href');
+        // Only handle if it's a page link
+        if (href.startsWith('#page-')) {
+            e.preventDefault();
+            const pageName = href.replace('#page-', '');
+            const index = pageNames.indexOf(pageName);
+            if (index !== -1) {
+                goToPage(index);
+            }
         }
     });
 });
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe elements for animation
-document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.value-card, .service-card, .contact-item');
-    animateElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
-        observer.observe(el);
-    });
-});
-
-// Parallax effect for hero background
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroBackground = document.querySelector('.hero-background');
-    if (heroBackground) {
-        heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-        heroBackground.style.opacity = 1 - (scrolled / 500);
-    }
-    
-    // Parallax for hero content
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent && scrolled < window.innerHeight) {
-        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-        heroContent.style.opacity = 1 - (scrolled / 600);
-    }
-});
-
-// Mouse move parallax effect
-document.addEventListener('mousemove', (e) => {
-    const cards = document.querySelectorAll('.value-card, .service-card');
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const moveX = (x - centerX) / 20;
-        const moveY = (y - centerY) / 20;
-        
-        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-            card.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        }
-    });
-});
-
-// Reset card transforms when mouse leaves
-document.addEventListener('mouseleave', () => {
-    const cards = document.querySelectorAll('.value-card, .service-card');
-    cards.forEach(card => {
-        card.style.transform = '';
-    });
-});
-

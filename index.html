@@ -19,10 +19,11 @@
                 <img src="public/logo_dark.png" alt="new song" class="logo-img logo-dark">
             </div>
             <ul class="nav-links">
-                <li><a href="#home" class="nav-link">home</a></li>
-                <li><a href="#about" class="nav-link">about</a></li>
-                <li><a href="#services" class="nav-link">services</a></li>
-                <li><a href="#connect" class="nav-link">connect</a></li>
+                <li><a href="#page-home" class="nav-link" data-page="home">home</a></li>
+                <li><a href="#page-about" class="nav-link" data-page="about">about</a></li>
+                <li><a href="#page-watch" class="nav-link" data-page="watch">watch</a></li>
+                <li><a href="#page-prayer" class="nav-link" data-page="prayer">prayer</a></li>
+                <li><a href="#page-new" class="nav-link" data-page="new">i'm new</a></li>
             </ul>
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -37,156 +38,181 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background" style="background-image: url('public/hero.png');"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">new song</h1>
-            <div class="hero-translations">
-                <span class="translation-ipa">/njuː sɒŋ/</span>
-                <span class="translation-sep">·</span>
-                <span class="translation-kr">뉴송</span>
-                <span class="translation-sep">·</span>
-                <span class="translation-jp">ニューソング</span>
-                <span class="translation-sep">·</span>
-                <span class="translation-zh">新歌</span>
-                <span class="translation-sep">·</span>
-                <span class="translation-ar">أغنية جديدة</span>
-                <span class="translation-sep">·</span>
-                <span class="translation-pa">ਨਵਾਂ ਗੀਤ</span>
-                <span class="translation-sep">·</span>
-                <span class="translation-hi">नया गीत</span>
-            </div>
-            <p class="hero-subtitle">a community where faith meets life</p>
-            <div class="hero-cta">
-                <a href="#connect" class="btn btn-primary">join us</a>
-                <a href="#about" class="btn btn-secondary">learn more</a>
-            </div>
-            <div class="hero-social">
-                <a href="#" class="hero-social-link" aria-label="Instagram">instagram</a>
-                <a href="#" class="hero-social-link" aria-label="YouTube">youtube</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">about</span>
-                <h2 class="section-title">who we are</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="lead">we're a vibrant community of believers committed to living out our faith authentically and making a difference in our world.</p>
-                    <p>at new song church, we believe in the power of community, the beauty of diversity, and the transformative message of the gospel. whether you're exploring faith for the first time or looking for a place to grow deeper, you're welcome here.</p>
-                    <div class="values-grid">
-                        <div class="value-card">
-                            <div class="value-icon">01</div>
-                            <h3>authentic</h3>
-                            <p>real people, real faith, real community</p>
+    <!-- Page Container -->
+    <div class="notebook-container">
+        <!-- Page 1: Home (Ministry) -->
+        <section id="page-home" class="notebook-page page-active">
+            <div class="page-binding"></div>
+            <div class="page-content">
+                <div class="hero">
+                    <div class="hero-background" style="background-image: url('public/hero.png');"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">new song</h1>
+                        <div class="hero-translations">
+                            <span class="translation-ipa">/njuː sɒŋ/</span>
+                            <span class="translation-sep">·</span>
+                            <span class="translation-kr">뉴송</span>
+                            <span class="translation-sep">·</span>
+                            <span class="translation-jp">ニューソング</span>
+                            <span class="translation-sep">·</span>
+                            <span class="translation-zh">新歌</span>
+                            <span class="translation-sep">·</span>
+                            <span class="translation-ar">أغنية جديدة</span>
+                            <span class="translation-sep">·</span>
+                            <span class="translation-pa">ਨਵਾਂ ਗੀਤ</span>
+                            <span class="translation-sep">·</span>
+                            <span class="translation-hi">नया गीत</span>
                         </div>
-                        <div class="value-card">
-                            <div class="value-icon">02</div>
-                            <h3>inclusive</h3>
-                            <p>everyone is welcome, no matter where you're from</p>
+                        <p class="hero-subtitle">empowering the next generation</p>
+                        <div class="hero-cta">
+                            <a href="#page-new" class="btn btn-primary">join us</a>
+                            <a href="#page-about" class="btn btn-secondary">learn more</a>
                         </div>
-                        <div class="value-card">
-                            <div class="value-icon">03</div>
-                            <h3>growing</h3>
-                            <p>together we grow in faith and purpose</p>
+                        <div class="hero-social">
+                            <a href="#" class="hero-social-link" aria-label="Instagram">instagram</a>
+                            <a href="#" class="hero-social-link" aria-label="YouTube">youtube</a>
+                        </div>
+                        <div class="hero-location">
+                            <div class="hero-info-item">
+                                <span class="hero-location-label">location</span>
+                                <span class="hero-location-value">coming soon</span>
+                            </div>
+                            <div class="hero-info-item">
+                                <span class="hero-location-label">service time</span>
+                                <span class="hero-location-value">TBA</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">services</span>
-                <h2 class="section-title">join us</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-time">sunday</div>
-                    <h3>morning service</h3>
-                    <p class="service-detail">10:00 am</p>
-                    <p>join us for worship, teaching, and community</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-time">wednesday</div>
-                    <h3>community groups</h3>
-                    <p class="service-detail">7:00 pm</p>
-                    <p>small groups for connection and growth</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-time">various</div>
-                    <h3>special events</h3>
-                    <p class="service-detail">check calendar</p>
-                    <p>workshops, retreats, and community gatherings</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Connect Section -->
-    <section id="connect" class="connect">
-        <div class="container">
-            <div class="connect-content">
-                <div class="section-header">
-                    <span class="section-label">connect</span>
-                    <h2 class="section-title">get in touch</h2>
-                </div>
-                <p class="connect-text">we'd love to hear from you. reach out to learn more, ask questions, or just say hello.</p>
-                <div class="contact-info">
-                    <!-- <a href="mailto:info@newsongchurch.ca" class="contact-item">
-                        <div class="contact-icon">e</div>
-                        <div>
-                            <div class="contact-label">email</div>
-                            <div class="contact-value">info@newsongchurch.ca</div>
+        <!-- Page 2: About (Vision and Mission) -->
+        <section id="page-about" class="notebook-page">
+            <div class="page-binding"></div>
+            <div class="page-content">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-label">about</span>
+                        <h2 class="section-title">statements</h2>
+                    </div>
+                    <div class="about-content">
+                        <div class="statement-card">
+                            <h3 class="statement-title">vision</h3>
+                            <p class="statement-text">One church, one faith, one Spirit—empowering the next generation to sing a <strong>new song</strong>.</p>
                         </div>
-                    </a>
-                    <a href="tel:+1234567890" class="contact-item">
-                        <div class="contact-icon">p</div>
-                        <div>
-                            <div class="contact-label">phone</div>
-                            <div class="contact-value">(123) 456-7890</div>
-                        </div>
-                    </a> -->
-                    <div class="contact-item">
-                        <div class="contact-icon">l</div>
-                        <div>
-                            <div class="contact-label">location</div>
-                            <div class="contact-value">coming soon</div>
+                        <div class="statement-card">
+                            <h3 class="statement-title">mission</h3>
+                            <p class="statement-text">Fostering a Spirit-led community where the young generation grow in faith, live out the Gospel, and bring Christ's presence into everyday life.</p>
                         </div>
                     </div>
                 </div>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Facebook">facebook</a>
-                    <a href="#" class="social-link" aria-label="Instagram">instagram</a>
-                    <a href="#" class="social-link" aria-label="YouTube">youtube</a>
+            </div>
+        </section>
+
+        <!-- Page 3: Watch -->
+        <section id="page-watch" class="notebook-page">
+            <div class="page-binding"></div>
+            <div class="page-content">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-label">watch</span>
+                        <h2 class="section-title">sermons & teachings</h2>
+                    </div>
+                    <div class="watch-content">
+                        <p class="watch-text">watch our latest sermons and teachings</p>
+                        <div class="watch-placeholder">
+                            <p>video content coming soon</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">new song church</div>
-                <p class="footer-text">&copy; 2025 new song church. all rights reserved.</p>
+        <!-- Page 4: Prayer -->
+        <section id="page-prayer" class="notebook-page">
+            <div class="page-binding"></div>
+            <div class="page-content">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-label">prayer</span>
+                        <h2 class="section-title">can we pray for you?</h2>
+                    </div>
+                    <div class="prayer-content">
+                        <p class="prayer-text">share your prayer requests with our community</p>
+                        <div class="prayer-placeholder">
+                            <p>prayer form coming soon</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Page 5: I'm New -->
+        <section id="page-new" class="notebook-page page-new">
+            <div class="page-binding"></div>
+            <div class="page-content">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-label">i'm new</span>
+                        <h2 class="section-title">welcome!</h2>
+                    </div>
+                    <div class="new-content">
+                        <div class="new-section">
+                            <h3 class="new-section-title">about us</h3>
+                            <p>we're a vibrant community of believers committed to living out our faith authentically and making a difference in our world.</p>
+                        </div>
+                        <div class="new-section">
+                            <h3 class="new-section-title">about you</h3>
+                            <p>whether you're exploring faith for the first time or looking for a place to grow deeper, you're welcome here.</p>
+                        </div>
+                        <div class="new-section">
+                            <h3 class="new-section-title">events</h3>
+                            <div class="events-list">
+                                <div class="event-item">
+                                    <div class="event-time">sunday</div>
+                                    <h4>morning service</h4>
+                                    <p class="event-detail">10:00 am</p>
+                                </div>
+                                <div class="event-item">
+                                    <div class="event-time">wednesday</div>
+                                    <h4>community groups</h4>
+                                    <p class="event-detail">7:00 pm</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="new-section">
+                            <h3 class="new-section-title">connect</h3>
+                            <div class="connect-info">
+                                <div class="connect-item">
+                                    <div class="connect-label">location</div>
+                                    <div class="connect-value">coming soon</div>
+                                </div>
+                                <div class="social-links">
+                                    <a href="#" class="social-link" aria-label="Instagram">instagram</a>
+                                    <a href="#" class="social-link" aria-label="YouTube">youtube</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Navigation -->
+    <div class="page-nav">
+        <button class="page-nav-btn page-nav-prev" id="pagePrev" aria-label="Previous page">‹</button>
+        <div class="page-indicators">
+            <button class="page-indicator active" data-page="home"></button>
+            <button class="page-indicator" data-page="about"></button>
+            <button class="page-indicator" data-page="watch"></button>
+            <button class="page-indicator" data-page="prayer"></button>
+            <button class="page-indicator" data-page="new"></button>
         </div>
-    </footer>
+        <button class="page-nav-btn page-nav-next" id="pageNext" aria-label="Next page">›</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
