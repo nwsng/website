@@ -115,6 +115,41 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Touch/Swipe navigation for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+let isSwiping = false;
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold && !isSwiping) {
+        isSwiping = true;
+        if (diff > 0) {
+            // Swipe left - go to next page
+            goToPage(currentPage + 1);
+        } else {
+            // Swipe right - go to previous page
+            goToPage(currentPage - 1);
+        }
+        // Reset swipe flag after animation
+        setTimeout(() => {
+            isSwiping = false;
+        }, 600);
+    }
+}
+
+// Touch event listeners
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, { passive: true });
+
 // Handle browser back/forward
 window.addEventListener('popstate', () => {
     initPage();
@@ -143,9 +178,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Prevent horizontal scroll on touch devices
+    // Prevent horizontal scroll on touch devices, but allow vertical scroll in page content
     document.addEventListener('touchmove', (e) => {
-        if (e.touches.length > 1) {
+        const target = e.target;
+        const pageContent = target.closest('.page-content');
+        
+        // Allow scrolling within page content
+        if (pageContent && pageContent.scrollHeight > pageContent.clientHeight) {
+            return;
+        }
+        
+        // Prevent horizontal scrolling on the notebook container
+        if (target.closest('.notebook-container') && !pageContent) {
             e.preventDefault();
         }
     }, { passive: false });
