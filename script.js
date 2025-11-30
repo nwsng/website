@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflowX = 'hidden';
     document.body.style.overflowY = 'hidden';
     document.body.style.width = '100%';
+    document.body.style.height = '100%';
     document.body.style.position = 'relative';
     
     // Allow scroll within pages
@@ -178,20 +179,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Prevent horizontal scroll on touch devices, but allow vertical scroll in page content
+    // Prevent body scroll on touch devices, but allow vertical scroll in page content
+    let touchStartY = 0;
+    let touchStartX = 0;
+    
+    document.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    
     document.addEventListener('touchmove', (e) => {
         const target = e.target;
         const pageContent = target.closest('.page-content');
         
         // Allow scrolling within page content
-        if (pageContent && pageContent.scrollHeight > pageContent.clientHeight) {
-            return;
+        if (pageContent) {
+            const touchY = e.touches[0].clientY;
+            const touchX = e.touches[0].clientX;
+            const deltaY = touchY - touchStartY;
+            const deltaX = touchX - touchStartX;
+            
+            // If horizontal swipe (for page navigation), prevent default
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                e.preventDefault();
+                return;
+            }
+            
+            // Allow vertical scrolling within page content
+            const isScrollable = pageContent.scrollHeight > pageContent.clientHeight;
+            if (isScrollable) {
+                const isAtTop = pageContent.scrollTop <= 0;
+                const isAtBottom = pageContent.scrollTop >= pageContent.scrollHeight - pageContent.clientHeight;
+                
+                // Prevent body scroll when at boundaries
+                if ((isAtTop && deltaY > 0) || (isAtBottom && deltaY < 0)) {
+                    e.preventDefault();
+                }
+                return;
+            }
         }
         
-        // Prevent horizontal scrolling on the notebook container
-        if (target.closest('.notebook-container') && !pageContent) {
-            e.preventDefault();
-        }
+        // Prevent all other scrolling (body scroll)
+        e.preventDefault();
     }, { passive: false });
 });
 
