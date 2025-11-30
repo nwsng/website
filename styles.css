@@ -157,6 +157,13 @@ body {
     align-items: center;
 }
 
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .logo-img {
     height: 2rem;
     width: auto;
@@ -587,6 +594,7 @@ section {
 
 .section-header {
     text-align: left;
+    margin-top: 2rem;
     margin-bottom: 5rem;
     position: relative;
 }
@@ -631,6 +639,7 @@ section {
 .about-content {
     max-width: 1000px;
     margin: 0;
+    padding-bottom: 4rem;
 }
 
 .lead {
@@ -1148,9 +1157,11 @@ section {
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    overflow-y: auto;
     overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
+    height: 100vh;
 }
 
 .page-content::-webkit-scrollbar {
@@ -1247,30 +1258,35 @@ section {
 
 .new-content {
     margin-top: 3rem;
+    max-width: 1000px;
+    margin: 3rem 0 0 0;
+    padding-bottom: 4rem;
 }
 
 .new-section {
-    margin-bottom: 4rem;
-    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
     border-bottom: 1px solid var(--border-color);
+    position: relative;
 }
 
 .new-section:last-child {
     border-bottom: none;
+    margin-bottom: 0;
 }
 
 .new-section-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: 300;
     color: var(--text-dark);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-transform: lowercase;
     letter-spacing: -0.02em;
 }
 
 .new-section p {
-    font-size: 1.125rem;
+    font-size: clamp(1.125rem, 1.8vw, 1.375rem);
     color: var(--text-light);
     line-height: 1.8;
     font-weight: 300;
@@ -1440,18 +1456,18 @@ section {
 
     .page-binding {
         width: 20px;
+        height: 100%;
     }
 
     .page-content {
         padding: 80px 1.5rem 2rem;
-        overflow-y: auto;
         overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        box-sizing: border-box;
         -webkit-overflow-scrolling: touch;
         touch-action: pan-y;
         height: 100vh;
-        position: relative;
-        overscroll-behavior: contain;
-        -webkit-overflow-scrolling: touch;
     }
 
     .page-nav {
