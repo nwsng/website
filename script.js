@@ -248,6 +248,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    // Announcement bar close
+    const announcementBar = document.getElementById('announcementBar');
+    const announcementClose = document.getElementById('announcementClose');
+    
+    if (announcementClose && announcementBar) {
+        announcementClose.addEventListener('click', () => {
+            announcementBar.classList.add('hidden');
+            // Adjust nav and content positions
+            const nav = document.getElementById('nav');
+            if (nav) {
+                nav.classList.add('no-announcement');
+            }
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks) {
+                navLinks.style.top = '70px';
+            }
+            document.querySelectorAll('.page-section:not(#page-home)').forEach(section => {
+                section.style.paddingTop = '80px';
+            });
+            const hero = document.querySelector('#page-home .hero');
+            if (hero) {
+                hero.style.paddingTop = '80px';
+            }
+        });
+    }
+    
     // Initialize
     initFromUrl();
 });
