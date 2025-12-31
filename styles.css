@@ -1115,7 +1115,8 @@ body {
     }
 
     .hero {
-        padding: 100px 1.5rem 2rem;
+        padding: calc(80px + 48px) 1.5rem 2rem;
+        min-height: 100vh;
     }
     
     .hero-content {
@@ -1125,7 +1126,7 @@ body {
     .hero-layout {
         flex-direction: column;
         gap: 3rem;
-        min-height: auto;
+        min-height: calc(100vh - 80px - 48px);
     }
 
     .hero-text {
