@@ -8,29 +8,33 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Sans+Gurmukhi:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Gentium+Plus:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Sans+Gurmukhi:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Gentium+Plus:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
             <div class="logo">
-                <a href="/home" class="logo-link">
-                    <img src="public/logo_light.png" alt="new song" class="logo-img logo-light">
-                    <img src="public/logo_dark.png" alt="new song" class="logo-img logo-dark">
+                <a href="/" class="logo-link">
+                    <img src="public/logo_dark.png" alt="new song" class="logo-img">
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="/home" class="nav-link" data-page="home">home</a></li>
-                <li><a href="/about" class="nav-link" data-page="about">about</a></li>
-                <li><a href="/watch" class="nav-link" data-page="watch">watch</a></li>
-                <li><a href="/prayer" class="nav-link" data-page="prayer">prayer</a></li>
-                <li><a href="/new" class="nav-link" data-page="new">i'm new</a></li>
+                <li><a href="/" class="nav-link" data-page="home">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link" data-page="about">About</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="/about" class="nav-link" data-page="about">What We Believe</a></li>
+                        <li><a href="/team" class="nav-link" data-page="team">Our Team</a></li>
+                    </ul>
+                </li>
+                <li><a href="/prayer" class="nav-link" data-page="prayer">Prayer & Care</a></li>
+                <li><a href="/serve" class="nav-link" data-page="serve">Serve</a></li>
+                <li><a href="/give" class="nav-link" data-page="give">Give</a></li>
+                <li><a href="https://forms.gle/MeabrP16b3PeewXi8" class="nav-link" target="_blank" rel="noopener noreferrer">I'm New</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <span class="theme-icon">🌙</span>
-                </button>
+                <a href="https://www.youtube.com/@nwsng.church" class="nav-link nav-watch-btn" target="_blank" rel="noopener noreferrer">Watch</a>
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
@@ -41,154 +45,192 @@
     </nav>
 
     <!-- Page Container -->
-    <div class="notebook-container">
+    <main class="main-content">
         <!-- Page 1: Home (Ministry) -->
-        <section id="page-home" class="notebook-page page-active">
-            <div class="page-binding"></div>
-            <div class="page-content">
-                <div class="hero">
-                    <div class="hero-background" style="background-image: url('public/hero.png');"></div>
-                    <div class="hero-content">
-                        <h1 class="hero-title">new song</h1>
-                        <div class="hero-translations">
-                            <span class="translation-ipa">/njuː sɒŋ/</span>
-                            <span class="translation-sep">·</span>
-                            <span class="translation-kr">뉴송</span>
-                            <span class="translation-sep">·</span>
-                            <span class="translation-jp">ニューソング</span>
-                            <span class="translation-sep">·</span>
-                            <span class="translation-zh">新歌</span>
-                            <span class="translation-sep">·</span>
-                            <span class="translation-ar">أغنية جديدة</span>
-                        </div>
-                        <p class="hero-subtitle">empowering the next generation</p>
-                        <div class="hero-cta">
-                            <a href="/new" class="btn btn-primary">join us</a>
-                            <a href="/about" class="btn btn-secondary">learn more</a>
-                        </div>
-                        <div class="hero-social">
-                            <a href="#" class="hero-social-link" aria-label="Instagram">instagram</a>
-                            <a href="#" class="hero-social-link" aria-label="YouTube">youtube</a>
-                        </div>
-                        <div class="hero-location">
-                            <div class="hero-info-item">
-                                <span class="hero-location-label">location</span>
-                                <span class="hero-location-value">coming soon</span>
-                            </div>
-                            <div class="hero-info-item">
-                                <span class="hero-location-label">service time</span>
-                                <span class="hero-location-value">TBA</span>
+        <section id="page-home" class="page-section page-active">
+            <div class="hero">
+                <div class="hero-background" style="background-image: url('public/background.png');"></div>
+                <div class="hero-content">
+                        <div class="hero-layout">
+                            <div class="hero-text">
+                                <h1 class="hero-title-line">One Church</h1>
+                                <h1 class="hero-title-line">One Faith</h1>
+                                <h1 class="hero-title-line">One Spirit</h1>
+                                <div class="hero-info">
+                                    <p class="hero-info-text">Sunday Services @ 3:30 PM</p>
+                                    <p class="hero-info-text">2552 Bristol Circle, Oakville, ON L6H 5S1 (2nd Floor)</p>
+                                </div>
+                                <div class="hero-cta">
+                                    <a href="/watch" class="btn btn-primary">Watch</a>
+                                    <a href="https://www.instagram.com/nwsng.church?igsh=MXU1a3d6Zmo2ZWc1dQ==" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Instagram</a>
+                                    <a href="https://forms.gle/MeabrP16b3PeewXi8" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">I'm New</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Page 2: About (Vision and Mission) -->
-        <section id="page-about" class="notebook-page">
-            <div class="page-binding"></div>
-            <div class="page-content">
-                <div class="container">
-                    <div class="section-header">
-                        <span class="section-label">about</span>
-                        <h2 class="section-title">statements</h2>
-                    </div>
-                    <div class="about-content">
-                        <div class="statement-card">
-                            <h3 class="statement-title">vision</h3>
-                            <p class="statement-text">One church, one faith, one Spirit—empowering the next generation to sing a <strong>new song</strong>.</p>
-                        </div>
-                        <div class="statement-card">
-                            <h3 class="statement-title">mission</h3>
-                            <p class="statement-text">Fostering a Spirit-led community where the young generation grow in faith, live out the Gospel, and bring Christ's presence into everyday life.</p>
-                        </div>
-                    </div>
+        <!-- Page 2: What We Believe -->
+        <section id="page-about" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">What We Believe</h2>
                 </div>
-            </div>
-        </section>
-
-        <!-- Page 3: Watch -->
-        <section id="page-watch" class="notebook-page">
-            <div class="page-binding"></div>
-            <div class="page-content">
-                <div class="container">
-                    <div class="section-header">
-                        <span class="section-label">watch</span>
-                        <h2 class="section-title">sermons & teachings</h2>
+                <div class="about-content">
+                    <div class="statement-card">
+                        <div class="statement-header">
+                            <h3 class="statement-title">Our Vision</h3>
+                        </div>
+                        <p class="statement-text">One Church, One Faith, One Spirit—empowering the next generations to sing a <strong>new song</strong> (Psalm 96:1-3).</p>
+                        <button class="statement-toggle" aria-label="Toggle explanation">
+                            <span class="toggle-text">Click here to read more</span>
+                            <span class="toggle-icon">+</span>
+                        </button>
+                        <div class="statement-expanded">
+                            <p>We believe God is calling us to something fresh and vibrant. This isn't about doing church the same old way—it's about creating a space where the next generation can discover what it means to follow Jesus in their own unique way. When we talk about "one church, one faith, one Spirit," we're talking about unity that transcends our differences. We're talking about a community where everyone belongs, where everyone has a voice, and where everyone can contribute to what God is doing. The new song we're singing isn't just about music—it's about a new way of being the church, a new expression of faith that speaks to where people are today while staying rooted in the timeless truth of the Gospel.</p>
+                        </div>
                     </div>
-                    <div class="watch-content">
-                        <p class="watch-text">watch our latest sermons and teachings</p>
-                        <div class="watch-placeholder">
-                            <p>video content coming soon</p>
+                    <div class="statement-card">
+                        <div class="statement-header">
+                            <h3 class="statement-title">Our Mission</h3>
+                        </div>
+                        <p class="statement-text">Fostering a Spirit-led community where the young generations grow in faith, live out the Gospel, and bring Christ's presence into everyday life (Acts 2:42-47).</p>
+                        <button class="statement-toggle" aria-label="Toggle explanation">
+                            <span class="toggle-text">Click here to read more</span>
+                            <span class="toggle-icon">+</span>
+                        </button>
+                        <div class="statement-expanded">
+                            <p>Our mission is really about creating a place where faith becomes real and practical. We're not interested in just showing up on Sundays and checking a box. We want to see people actually grow—not just in knowledge, but in their relationship with Jesus. That means we're committed to teaching God's Word in ways that make sense, creating spaces for honest conversation, and walking alongside each other through the ups and downs of life. When we say "Spirit-led," we mean we're trying to follow where God is leading, not just doing what we've always done. And bringing Christ's presence into everyday life? That's about helping people see that following Jesus isn't just a Sunday thing—it's a Monday morning, Tuesday afternoon, Wednesday evening thing. It's about how we work, how we love, how we serve, and how we live.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Page 4: Prayer -->
-        <section id="page-prayer" class="notebook-page">
-            <div class="page-binding"></div>
-            <div class="page-content">
-                <div class="container">
-                    <div class="section-header">
-                        <span class="section-label">prayer</span>
-                        <h2 class="section-title">can we pray for you?</h2>
+        <!-- Page 3: Our Team -->
+        <section id="page-team" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Team</h2>
+                </div>
+                <div class="team-content">
+                    <div class="team-member">
+                        <div class="team-member-photo">
+                            <img src="public/headshots/headshot-1.jpg" alt="Samuel Kim" class="team-photo">
+                        </div>
+                        <div class="team-member-info">
+                            <h3 class="team-member-name">Samuel Kim</h3>
+                            <p class="team-member-title">Lead Pastor, Rev. (DMin)</p>
+                            <p class="team-member-text">Rev. Samuel Kim founded New Song Church with many years of pastoral ministry experience, having served congregations in Mississauga, Hawaii, California, Maryland, and Missouri.</p>
+                            <p class="team-member-text">He holds a Bachelor of Arts in Christian Education, a Master of Theology, a Master of Divinity in Youth, Family, and Culture, and a Doctor of Ministry in Non-Profit Organizational Leadership.</p>
+                            <p class="team-member-text">Pastor Samuel carries a deep passion for building the church with and for the next generation, equipping leaders, and cultivating a Christ-centered community that worships, serves, and grows together.</p>
+                        </div>
                     </div>
-                    <div class="prayer-content">
-                        <p class="prayer-text">share your prayer requests with our community</p>
-                        <div class="prayer-placeholder">
-                            <p>prayer form coming soon</p>
+                    <div class="team-member">
+                        <div class="team-member-photo">
+                            <img src="public/headshots/headshot-2.PNG" alt="Peter Jang" class="team-photo">
+                        </div>
+                        <div class="team-member-info">
+                            <h3 class="team-member-name">Peter Jang</h3>
+                            <p class="team-member-title">Director, Worship & Creative Arts</p>
+                            <p class="team-member-text">Peter joined New Song Church as part of the founding team, bringing extensive experience in worship ministry, creative arts, and technology. For many years, he has served as a worship drummer with worship teams across the Greater Toronto Area.</p>
+                            <p class="team-member-text">Professionally, he is a tech lead in the technology industry, specializing in research and development in AI and energy systems.</p>
+                            <p class="team-member-text">With a heart for worship and innovation, Peter is passionate about creating meaningful, God-honoring worship experiences that engage both the church and the wider community.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Page 5: I'm New -->
-        <section id="page-new" class="notebook-page page-new">
-            <div class="page-binding"></div>
-            <div class="page-content">
-                <div class="container">
-                    <div class="section-header">
-                        <span class="section-label">i'm new</span>
-                        <h2 class="section-title">welcome!</h2>
+        <!-- Page 4: Watch -->
+        <section id="page-watch" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Watch</h2>
+                </div>
+                <div class="watch-content">
+                    <p class="watch-text">Watch our latest sermons and teachings</p>
+                    <div class="watch-placeholder">
+                        <p>Video content coming soon</p>
                     </div>
-                    <div class="new-content">
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 4: Prayer & Care -->
+        <section id="page-prayer" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Prayer & Care</h2>
+                </div>
+                <div class="prayer-content">
+                    <p class="prayer-text">We believe in the power of prayer and community care. If you're going through a difficult season, facing challenges, or simply need someone to walk alongside you, we're here.</p>
+                    <p class="prayer-text">Our church family is committed to supporting one another through prayer, encouragement, and practical care. Whether you need prayer, a listening ear, or help navigating life's challenges, please don't hesitate to reach out.</p>
+                    <div class="prayer-cta">
+                        <a href="#" class="btn btn-primary">Submit a Prayer Request (Coming Soon)</a>
+                        <a href="https://www.instagram.com/nwsng.church?igsh=MXU1a3d6Zmo2ZWc1dQ==" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">DM @nwsng.church</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 5: Serve -->
+        <section id="page-serve" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Serve</h2>
+                </div>
+                <div class="serve-content">
+                    <p class="serve-text">Thank you for your heart to serve at New Song. If you are interested in serving, please contact us via Instagram below.</p>
+                    <div class="serve-cta">
+                        <a href="#" class="btn btn-primary">Submit Request to Serve (Coming Soon)</a>
+                        <a href="https://www.instagram.com/nwsng.church?igsh=MXU1a3d6Zmo2ZWc1dQ==" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">DM @nwsng.church</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 6: I'm New -->
+        <section id="page-new" class="page-section page-new">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">I'm New</h2>
+                </div>
+                <div class="new-content">
                         <div class="new-section">
-                            <h3 class="new-section-title">about us</h3>
-                            <p>we're a Spirit-led community empowering the next generation to grow in faith, live out the Gospel, and bring Christ's presence into everyday life—singing a <strong>new song</strong> together.</p>
+                            <h3 class="new-section-title">About Us</h3>
+                            <p>We're a Spirit-led community empowering the next generation to grow in faith, live out the Gospel, and bring Christ's presence into everyday life—singing a <strong>new song</strong> together.</p>
                         </div>
                         <div class="new-section">
-                            <h3 class="new-section-title">about you</h3>
-                            <p>whether you're exploring faith for the first time or seeking to grow deeper, you're welcome here. join us as we journey together in one church, one faith, one Spirit.</p>
+                            <h3 class="new-section-title">About You</h3>
+                            <p>Whether you're exploring faith for the first time or seeking to grow deeper, you're welcome here. Join us as we journey together in one church, one faith, one Spirit.</p>
                         </div>
                         <div class="new-section">
-                            <h3 class="new-section-title">events</h3>
+                            <h3 class="new-section-title">Events</h3>
                             <div class="events-list">
                                 <div class="event-item">
-                                    <div class="event-time">sunday</div>
-                                    <h4>service</h4>
+                                    <div class="event-time">Sunday</div>
+                                    <h4>Service</h4>
                                     <p class="event-detail">TBA</p>
                                 </div>
                                 <div class="event-item">
-                                    <div class="event-time">coming soon</div>
-                                    <h4>groups</h4>
+                                    <div class="event-time">Coming Soon</div>
+                                    <h4>Groups</h4>
                                     <p class="event-detail">TBA</p>
                                 </div>
                             </div>
                         </div>
                         <div class="new-section">
-                            <h3 class="new-section-title">connect</h3>
+                            <h3 class="new-section-title">Connect</h3>
                             <div class="connect-info">
                                 <div class="connect-item">
-                                    <div class="connect-label">location</div>
-                                    <div class="connect-value">coming soon</div>
+                                    <div class="connect-label">Location</div>
+                                    <div class="connect-value">Coming Soon</div>
                                 </div>
                                 <div class="social-links">
-                                    <a href="#" class="social-link" aria-label="Instagram">instagram</a>
-                                    <a href="#" class="social-link" aria-label="YouTube">youtube</a>
+                                    <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                                    <a href="#" class="social-link" aria-label="YouTube">YouTube</a>
                                 </div>
                             </div>
                         </div>
@@ -196,20 +238,19 @@
                 </div>
             </div>
         </section>
-    </div>
 
-    <!-- Page Navigation -->
-    <div class="page-nav">
-        <button class="page-nav-btn page-nav-prev" id="pagePrev" aria-label="Previous page">‹</button>
-        <div class="page-indicators">
-            <button class="page-indicator active" data-page="home"></button>
-            <button class="page-indicator" data-page="about"></button>
-            <button class="page-indicator" data-page="watch"></button>
-            <button class="page-indicator" data-page="prayer"></button>
-            <button class="page-indicator" data-page="new"></button>
-        </div>
-        <button class="page-nav-btn page-nav-next" id="pageNext" aria-label="Next page">›</button>
-    </div>
+        <!-- Page 6: Give -->
+        <section id="page-give" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Give</h2>
+                </div>
+                <div class="give-content">
+                    <p class="give-text">Thank you for your generosity for the Lord. At this time, offerings and donations are held during Sunday services in-person. We are working towards online and e-transfer methods.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // GitHub Pages 404.html redirect
+        // Get the path from the URL
+        const path = window.location.pathname;
+        
+        // Map routes to page names
+        const routeMap = {
+            '/about': 'about',
+            '/team': 'team',
+            '/watch': 'watch',
+            '/prayer': 'prayer',
+            '/serve': 'serve',
+            '/new': 'new',
+            '/give': 'give',
+            '/home': 'home'
+        };
+        
+        // Find matching route
+        let pageName = 'home';
+        for (const [route, name] of Object.entries(routeMap)) {
+            if (path === route || path.startsWith(route + '/')) {
+                pageName = name;
+                break;
+            }
+        }
+        
+        // Redirect to index.html with hash
+        const baseUrl = window.location.origin;
+        window.location.replace(baseUrl + '/#' + pageName);
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+    <script>
+        // Fallback: redirect after a short delay
+        setTimeout(function() {
+            window.location.replace('/');
+        }, 100);
+    </script>
+</body>
+</html>
+
