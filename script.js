@@ -235,7 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Statement toggles
     document.querySelectorAll('.statement-toggle').forEach((toggle) => {
         toggle.addEventListener('click', () => {
-            const expanded = toggle.parentElement.parentElement.querySelector('.statement-expanded');
+            const statementCard = toggle.closest('.statement-card');
+            const expanded = statementCard.querySelector('.statement-expanded');
             const isActive = expanded.classList.contains('active');
             
             if (isActive) {
